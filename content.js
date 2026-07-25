@@ -295,6 +295,14 @@ function renderResult(rect, result) {
   )}</span>`;
   wrap.appendChild(durationRow);
 
+  if (result.mapsUrl) {
+    const link = document.createElement("span");
+    link.className = "dfh-link";
+    link.textContent = "Open route in Google Maps";
+    link.addEventListener("click", () => window.open(result.mapsUrl, "_blank", "noopener"));
+    wrap.appendChild(link);
+  }
+
   showPanel(rect, wrap);
 }
 

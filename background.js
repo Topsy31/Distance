@@ -32,10 +32,31 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (!handler) return false;
 
   handler()
-    .then((result) => sendResponse({ ok: true, result }))
+    .then((result) => {
+      sendResponse({ ok: true, result });
+      syncBadge();
+    })
     .catch((err) => sendResponse({ ok: false, error: err.message }));
   return true; // keep the message channel open for the async response
 });
+
+// The service worker can be killed and woken at any time (not just browser
+// launch), so badge state is recomputed from storage on every script
+// evaluation. onStartup is also listened for explicitly since a fresh
+// browser launch may not otherwise wake the worker until a message arrives.
+syncBadge();
+chrome.runtime.onStartup.addListener(syncBadge);
+
+async function syncBadge() {
+  const { vault } = await chrome.storage.local.get(["vault"]);
+  const { unlocked } = await chrome.storage.session.get(["unlocked"]);
+
+  const locked = !!vault && !unlocked;
+  await chrome.action.setBadgeText({ text: locked ? "•" : "" });
+  if (locked) {
+    await chrome.action.setBadgeBackgroundColor({ color: "#d93025" });
+  }
+}
 
 // ---------- Session / vault helpers ----------
 
@@ -136,7 +157,16 @@ async function lookupDistance(destinationText) {
     distanceText: leg.distance?.text ?? "?",
     durationText: leg.duration?.text ?? "?",
     destinationAddress: leg.end_address ?? destinationText.trim(),
+    mapsUrl: buildMapsUrl(home, leg.end_address ?? destinationText.trim()),
   };
+}
+
+function buildMapsUrl(home, destinationAddress) {
+  const url = new URL("https://www.google.com/maps/dir/?api=1");
+  url.searchParams.set("origin", `${home.lat},${home.lng}`);
+  url.searchParams.set("destination", destinationAddress);
+  url.searchParams.set("travelmode", "driving");
+  return url.toString();
 }
 
 async function geocodeAddress(address, apiKey) {

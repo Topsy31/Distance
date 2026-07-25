@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Distance From Home",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Highlight a postcode or address on any page to see driving distance and time from home.",
   "permissions": ["storage"],
   "host_permissions": ["https://maps.googleapis.com/*"],
