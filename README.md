@@ -36,11 +36,15 @@ driving distance and time from your home, without leaving the page.
 
 Highlight a postcode or address on any page. A small car icon appears next
 to the selection — click it to see driving distance and time from home in a
-popup on the page. Toggle the extension on/off from the toolbar icon.
+popup on the page. From there, click **Open route in Google Maps** to see
+the full route mapped out in a new tab. Toggle the extension on/off from
+the toolbar icon.
 
-Each time you restart your browser, the extension starts **locked** — click
-the toolbar icon and enter your passphrase to unlock it for that browsing
-session. Use the **Lock** button in the popup to lock it again manually.
+Each time you restart your browser, the extension starts **locked** — a red
+badge on the toolbar icon shows when this is the case. Click the icon and
+enter your passphrase to unlock it for that browsing session (the badge
+clears once unlocked). Use the **Lock** button in the popup to lock it
+again manually.
 
 ## Security model
 

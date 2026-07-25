@@ -22,8 +22,10 @@ driving distance and time from your home, without leaving the page.
 ## Use
 
 Highlight a postcode or address on any page, click the car icon that
-appears next to it, and see driving distance and time from home. Each time
-you restart your browser, unlock the extension again from the toolbar icon.
+appears next to it, and see driving distance and time from home. Click
+**Open route in Google Maps** to see the full route in a new tab. A red
+badge on the toolbar icon means the extension is locked — each time you
+restart your browser, unlock it again from the toolbar icon.
 
 ## Full documentation
 
