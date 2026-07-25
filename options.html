@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Distance From Home — Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <main>
+    <h1>Distance From Home</h1>
+    <p class="hint">
+      Your API key and home address are encrypted with a passphrase before
+      they're saved. The passphrase itself is never stored — without it,
+      the saved data can't be read back, including by you, so don't forget
+      it.
+    </p>
+
+    <section>
+      <label>Distance units</label>
+      <div class="segmented" id="unitsToggle">
+        <input type="radio" id="unitsMetric" name="units" value="metric" checked />
+        <label for="unitsMetric" class="segmented-label">Kilometers</label>
+        <input type="radio" id="unitsImperial" name="units" value="imperial" />
+        <label for="unitsImperial" class="segmented-label">Miles</label>
+      </div>
+      <p class="hint">Saved instantly — applies to your next lookup.</p>
+    </section>
+
+    <section>
+      <label for="passphrase">Passphrase</label>
+      <input id="passphrase" type="password" autocomplete="off" />
+      <p class="hint">
+        Used to encrypt/decrypt your data. Required every time you save or
+        unlock.
+      </p>
+      <button id="unlock" type="button">Unlock &amp; edit current settings</button>
+      <p id="unlockStatus" class="hint"></p>
+    </section>
+
+    <section>
+      <label for="apiKey">Google Maps Platform API key</label>
+      <input id="apiKey" type="text" placeholder="AIza..." autocomplete="off" />
+      <p class="hint">
+        Needs the Directions API and Geocoding API enabled on the same
+        Google Cloud project.
+      </p>
+    </section>
+
+    <section>
+      <label for="homeAddress">Home address</label>
+      <input id="homeAddress" type="text" placeholder="123 Main St, City, Country" />
+    </section>
+
+    <section>
+      <button id="save" type="button">Save &amp; encrypt</button>
+      <p id="saveStatus" class="hint"></p>
+    </section>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

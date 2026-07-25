@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Distance From Home</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main>
+    <div class="row">
+      <span>Enabled</span>
+      <label class="switch">
+        <input type="checkbox" id="enabledToggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <p id="status" class="hint">Loading…</p>
+
+    <div id="unlockSection" class="hidden">
+      <input id="passphrase" type="password" placeholder="Passphrase" autocomplete="off" />
+      <button id="unlock">Unlock</button>
+      <p id="unlockError" class="hint error"></p>
+    </div>
+
+    <button id="lock" class="hidden">Lock</button>
+    <button id="openOptions">Settings</button>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

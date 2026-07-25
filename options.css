@@ -1,0 +1,117 @@
+body {
+  font: 14px/1.5 system-ui, sans-serif;
+  color: #202124;
+  margin: 0;
+  padding: 24px;
+  max-width: 480px;
+}
+
+h1 {
+  font-size: 18px;
+  margin: 0 0 16px;
+}
+
+section {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #1a73e8;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1558b0;
+}
+
+.hint {
+  color: #5f6368;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
+.hint.error {
+  color: #d93025;
+}
+
+.hint.success {
+  color: #188038;
+}
+
+.segmented {
+  position: relative;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.segmented::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: #1a73e8;
+  border-radius: 20px;
+  transition: transform 0.2s ease;
+  z-index: 0;
+}
+
+.segmented:has(#unitsImperial:checked)::before {
+  transform: translateX(100%);
+}
+
+.segmented input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.segmented-label {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  text-align: center;
+  padding: 8px 4px;
+  margin: 0;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 13px;
+  color: #5f6368;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.segmented input[type="radio"]:checked + .segmented-label {
+  color: #fff;
+}

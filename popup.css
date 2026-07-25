@@ -1,0 +1,104 @@
+body {
+  font: 14px/1.4 system-ui, sans-serif;
+  color: #202124;
+  margin: 0;
+  width: 220px;
+}
+
+main {
+  padding: 14px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.hint {
+  color: #5f6368;
+  font-size: 12px;
+  margin: 0 0 12px;
+  word-break: break-word;
+}
+
+.hint.error {
+  color: #d93025;
+}
+
+.hidden {
+  display: none;
+}
+
+input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 9px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+button {
+  width: 100%;
+  padding: 8px 0;
+  border: none;
+  border-radius: 6px;
+  background: #1a73e8;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+button:hover {
+  background: #1558b0;
+}
+
+button:last-child {
+  margin-bottom: 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: 0.15s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.15s;
+}
+
+input:checked + .slider {
+  background-color: #1a73e8;
+}
+
+input:checked + .slider::before {
+  transform: translateX(16px);
+}
