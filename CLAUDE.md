@@ -56,4 +56,4 @@ Chrome only injects declarative `content_scripts` into frames that actually **na
 
 ## Project status
 
-Passphrase-encrypted vault in place (manifest, background worker, content script, options page, popup). Selection detection covers both regular page text and text selected inside `<input>`/`<textarea>` fields. No icons yet — the manifest omits the `icons` key, which Chrome allows for unpacked/dev extensions. No build/lint/test tooling exists; there's no bundler because the extension currently has no dependencies to bundle.
+Passphrase-encrypted vault in place (manifest, background worker, content script, options page, popup). Selection detection covers both regular page text and text selected inside `<input>`/`<textarea>` fields. Icons in place at `icons/icon{16,32,48,128}.png` (red car on blue background), wired into both the manifest's top-level `icons` and `action.default_icon`. No build/lint/test tooling exists; there's no bundler because the extension currently has no dependencies to bundle.
