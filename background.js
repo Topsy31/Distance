@@ -112,7 +112,11 @@ async function saveVault(passphrase, apiKey, homeAddress) {
 // ---------- Google Maps Platform calls ----------
 
 async function lookupDistance(destinationText) {
-  const { enabled, units } = await chrome.storage.local.get(["enabled", "units"]);
+  const { enabled, units, showReturnDistance } = await chrome.storage.local.get([
+    "enabled",
+    "units",
+    "showReturnDistance",
+  ]);
   if (enabled === false) {
     throw new Error("Distance From Home is turned off.");
   }
@@ -153,12 +157,31 @@ async function lookupDistance(destinationText) {
     throw new Error("No route found.");
   }
 
-  return {
+  const result = {
     distanceText: leg.distance?.text ?? "?",
     durationText: leg.duration?.text ?? "?",
     destinationAddress: leg.end_address ?? destinationText.trim(),
     mapsUrl: buildMapsUrl(home, leg.end_address ?? destinationText.trim()),
   };
+
+  if (showReturnDistance && leg.distance?.value != null) {
+    result.roundTripDistanceText = formatDistance(leg.distance.value * 2, units);
+  }
+
+  return result;
+}
+
+// Round-trip distance reuses the outbound leg's value doubled rather than
+// requesting a second (destination -> home) route, since driving distance
+// is normally close enough to symmetric for this to be a useful estimate,
+// and it avoids doubling API usage on every lookup.
+function formatDistance(meters, units) {
+  if (units === "imperial") {
+    const miles = meters / 1609.344;
+    return `${miles < 10 ? miles.toFixed(1) : Math.round(miles)} mi`;
+  }
+  const km = meters / 1000;
+  return `${km < 10 ? km.toFixed(1) : Math.round(km)} km`;
 }
 
 function buildMapsUrl(home, destinationAddress) {

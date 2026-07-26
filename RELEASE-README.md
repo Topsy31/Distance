@@ -15,7 +15,8 @@ driving distance and time from your home, without leaving the page.
    **Geocoding API** enabled — full walkthrough in the main repo's README
    (link below).
 2. Click the extension's toolbar icon → **Settings**.
-3. Pick **Kilometers** or **Miles**, then enter a passphrase, your API key,
+3. Pick **Kilometers** or **Miles**, and optionally tick **Show return
+   distance** for round-trip totals. Then enter a passphrase, your API key,
    and your home address.
 4. Click **Save & encrypt**.
 

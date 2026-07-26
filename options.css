@@ -115,3 +115,18 @@ button:hover {
 .segmented input[type="radio"]:checked + .segmented-label {
   color: #fff;
 }
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}

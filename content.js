@@ -281,10 +281,14 @@ function renderResult(rect, result) {
   title.textContent = result.destinationAddress;
   wrap.appendChild(title);
 
+  const distanceValue = result.roundTripDistanceText
+    ? `${result.distanceText} (${result.roundTripDistanceText} round trip)`
+    : result.distanceText;
+
   const distanceRow = document.createElement("div");
   distanceRow.className = "dfh-row";
   distanceRow.innerHTML = `<span class="dfh-label">Distance</span><span>${escapeHtml(
-    result.distanceText
+    distanceValue
   )}</span>`;
   wrap.appendChild(distanceRow);
 

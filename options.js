@@ -4,6 +4,7 @@ const homeAddressInput = document.getElementById("homeAddress");
 const unlockStatus = document.getElementById("unlockStatus");
 const saveStatus = document.getElementById("saveStatus");
 const unitsInputs = document.querySelectorAll('input[name="units"]');
+const showReturnDistanceInput = document.getElementById("showReturnDistance");
 
 chrome.storage.local.get(["units"], ({ units }) => {
   const value = units === "imperial" ? "imperial" : "metric";
@@ -14,6 +15,14 @@ unitsInputs.forEach((input) => {
   input.addEventListener("change", () => {
     if (input.checked) chrome.storage.local.set({ units: input.value });
   });
+});
+
+chrome.storage.local.get(["showReturnDistance"], ({ showReturnDistance }) => {
+  showReturnDistanceInput.checked = !!showReturnDistance;
+});
+
+showReturnDistanceInput.addEventListener("change", () => {
+  chrome.storage.local.set({ showReturnDistance: showReturnDistanceInput.checked });
 });
 
 document.getElementById("unlock").addEventListener("click", async () => {

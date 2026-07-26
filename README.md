@@ -22,8 +22,10 @@ driving distance and time from your home, without leaving the page.
    mode* (toggle, top right), click *Load unpacked*, and select the
    folder you downloaded or cloned in step 2.
 4. Click the extension's toolbar icon → **Settings**. At the top, pick
-   **Kilometers** or **Miles** — saved instantly, switch anytime. Then
-   enter:
+   **Kilometers** or **Miles** — saved instantly, switch anytime. Below
+   that, optionally tick **Show return distance** to add the round-trip
+   distance in parentheses (e.g. "12 mi (24 mi round trip)") — also saved
+   instantly. Then enter:
    - A **passphrase** — this encrypts everything below before it's saved.
      Pick something you'll remember; it's never stored anywhere, so it
      can't be recovered if you forget it (you'd just re-enter your API key
