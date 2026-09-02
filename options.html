@@ -54,6 +54,9 @@
       <p class="hint">
         Needs the Directions API and Geocoding API enabled on the same
         Google Cloud project.
+        <button id="showGuide" type="button" class="link-button">
+          How do I get one?
+        </button>
       </p>
     </section>
 
@@ -67,6 +70,79 @@
       <p id="saveStatus" class="hint"></p>
     </section>
   </main>
+
+  <div id="guideOverlay" class="guide-overlay" hidden></div>
+  <aside id="guide" class="guide" hidden aria-hidden="true"
+         role="dialog" aria-modal="false" aria-labelledby="guideTitle">
+    <div class="guide-head">
+      <h2 id="guideTitle">Getting a Google Maps API key</h2>
+      <button id="closeGuide" type="button" class="guide-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="guide-body">
+      <p>
+        This stays open while you work through the steps. Google may change
+        wording slightly, but the flow is the same. A billing account is
+        required even though normal personal use stays inside the free
+        monthly allowance.
+      </p>
+      <ol>
+        <li>
+          <strong>Open the Google Cloud console.</strong> Go to
+          <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">
+            console.cloud.google.com</a>
+          and sign in with a Google account.
+        </li>
+        <li>
+          <strong>Create a project.</strong> Click the project dropdown in
+          the top bar → <em>New Project</em>. Name it anything (e.g.
+          "Distance extension") and create it, then make sure that project
+          is selected in the dropdown.
+        </li>
+        <li>
+          <strong>Enable billing.</strong> Open the navigation menu (&#9776;)
+          → <em>Billing</em> and link a billing account (you'll add a card).
+          The APIs below won't return results without this, but they have a
+          large free tier for low-volume use.
+        </li>
+        <li>
+          <strong>Enable the two APIs.</strong> Go to
+          <a href="https://console.cloud.google.com/apis/library" target="_blank" rel="noopener">
+            APIs &amp; Services → Library</a>.
+          Search for <strong>Directions API</strong>, open it, click
+          <em>Enable</em>. Then do the same for <strong>Geocoding API</strong>.
+          Both must be on the same project.
+        </li>
+        <li>
+          <strong>Create the key.</strong> Go to
+          <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener">
+            APIs &amp; Services → Credentials</a>
+          → <em>Create Credentials</em> → <em>API key</em>. Copy the key
+          it shows (starts with <code>AIza</code>).
+        </li>
+        <li>
+          <strong>Restrict the key (recommended).</strong> Click the new
+          key to edit it. Under <em>API restrictions</em> choose
+          <em>Restrict key</em> and tick <strong>Directions API</strong>
+          and <strong>Geocoding API</strong>. Leave
+          <em>Application restrictions</em> set to <em>None</em> — the
+          extension calls these APIs from a background service worker, so
+          HTTP-referrer and IP restrictions will block it. Save.
+        </li>
+        <li>
+          <strong>Paste it in.</strong> Put the key in the
+          <em>Google Maps Platform API key</em> field, add your home
+          address, enter a passphrase, and click <em>Save &amp; encrypt</em>.
+        </li>
+      </ol>
+      <p class="guide-note">
+        If lookups fail later with a billing or authorisation error, it's
+        almost always one of: billing not linked, one of the two APIs not
+        enabled, or the key restricted to the wrong APIs / an application
+        restriction that blocks server-side calls.
+      </p>
+    </div>
+  </aside>
+
   <script src="options.js"></script>
 </body>
 </html>

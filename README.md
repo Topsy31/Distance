@@ -21,7 +21,10 @@ driving distance and time from your home, without leaving the page.
 3. **Load the extension**: open `chrome://extensions`, enable *Developer
    mode* (toggle, top right), click *Load unpacked*, and select the
    folder you downloaded or cloned in step 2.
-4. Click the extension's toolbar icon → **Settings**. At the top, pick
+4. Click the extension's toolbar icon → **Settings**. Next to the API key
+   field, **How do I get one?** opens a slide-out panel with the same
+   steps as [Getting a Google Maps API key](#getting-a-google-maps-api-key)
+   below, so you can follow them without leaving the page. At the top, pick
    **Kilometers** or **Miles** — saved instantly, switch anytime. Below
    that, optionally tick **Show return distance** to add the round-trip
    distance in parentheses (e.g. "12 mi (24 mi round trip)") — also saved

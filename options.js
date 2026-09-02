@@ -87,6 +87,34 @@ document.getElementById("save").addEventListener("click", async () => {
   );
 });
 
+const guide = document.getElementById("guide");
+const guideOverlay = document.getElementById("guideOverlay");
+
+function openGuide() {
+  guideOverlay.hidden = false;
+  guide.hidden = false;
+  guide.setAttribute("aria-hidden", "false");
+  requestAnimationFrame(() => guide.classList.add("open"));
+}
+
+function closeGuide() {
+  guide.classList.remove("open");
+  guide.setAttribute("aria-hidden", "true");
+  guideOverlay.hidden = true;
+  const done = () => {
+    guide.hidden = true;
+    guide.removeEventListener("transitionend", done);
+  };
+  guide.addEventListener("transitionend", done);
+}
+
+document.getElementById("showGuide").addEventListener("click", openGuide);
+document.getElementById("closeGuide").addEventListener("click", closeGuide);
+guideOverlay.addEventListener("click", closeGuide);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !guide.hidden) closeGuide();
+});
+
 function setStatus(el, text, kind) {
   el.textContent = text;
   el.classList.remove("error", "success");
